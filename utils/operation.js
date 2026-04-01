@@ -1,13 +1,20 @@
 export function add(numbers) {
-    return {}
-    }
-export function subtract(numbers) {
-      return {}
-    }
+    return numbers.reduce((sum, num) => sum + num, 0);
+}
 
-    export function multiply(numbers) {
-      return {}
-    }
+export function subtract(numbers) {
+    if (numbers.length === 0) return 0;
+    return numbers.slice(1).reduce((result, num) => result - num, numbers[0]);
+}
+
+export function multiply(numbers) {
+    return numbers.reduce((product, num) => product * num, 1);
+}
+  
 export function divide(numbers) {
-      return {}
+    if (numbers.length === 0) return NaN;
+    if (numbers.slice(1).includes(0)) {
+        throw new Error("Cannot divide by zero");
     }
+    return numbers.slice(1).reduce((result, num) => result / num, numbers[0]);
+}
